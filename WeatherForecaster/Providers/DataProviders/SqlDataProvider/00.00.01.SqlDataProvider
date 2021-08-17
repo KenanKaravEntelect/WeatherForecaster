@@ -1,0 +1,45 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}WeatherForecaster_Cities]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}WeatherForecaster_Cities]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}WeatherForecaster_Cities
+    (
+    CityId int NOT NULL IDENTITY (1, 1),
+    CityName nvarchar(MAX) NOT NULL,
+    CityDescription nvarchar(MAX) NULL,
+    Temperature nvarchar(10) NULL,
+    TemperatureMin nvarchar(10) NULL,
+    TemperatureMax nvarchar(10) NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+ALTER TABLE {databaseOwner}{objectQualifier}WeatherForecaster_Cities ADD CONSTRAINT
+    PK_{objectQualifier}WeatherForecaster_Cities PRIMARY KEY CLUSTERED 
+    (
+    CityId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

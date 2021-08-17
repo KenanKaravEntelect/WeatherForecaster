@@ -1,0 +1,176 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Kenan.Modules.WeatherForecaster.Models.City>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+
+<div id="Items-@Dnn.ModuleContext.ModuleId" class="card mx-3 mt-2 mb-2 bg-dark">
+    <div class="row">
+        <div class="col mx-3 pt-2">
+
+            <h3 class="text-white">@Dnn.LocalizeString("Title")</h3>
+
+        </div>
+
+    </div>
+    @if (Model.Count() == 0)
+    {
+        <p>@Dnn.LocalizeString("NoCities")</p>
+    }
+    else
+    {
+        <ul class="tm_tl">
+            @foreach (var city in Model)
+            {
+                <li class="tm_t">
+                    
+
+                        @{
+                            if (Dnn.ModuleContext.IsEditable)
+                            {
+                                <div class="row">
+                                    <div class="col-1 offset-10">
+                                        <a href="@Url.Action("Edit", "City", new { ctl = "Edit", cityId = city.CityId })"><p class="text-orange">@Dnn.LocalizeString("EditCity")</p></a>
+                                    </div>
+                                    <div class="col-1 ">
+                                        <a href="@Url.Action("Delete", "City", new { CityId = city.CityId })"><p>@Dnn.LocalizeString("DeleteCity")</p></a>
+                                    </div>
+                                </div>
+                            }
+                            else { 
+                            
+                <div class="row spacer mt-3 mb-3">
+                    
+                    <div class="col">
+                    </div>
+                </div>
+                            }
+                        }
+
+                    <div class="row mx-3 text-white">
+                        <div class="col">
+
+                            <div class="row" id="topRow">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3 class="text-white">@city.CityName</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <h4 class="text-white">
+
+                                                @city.CityDescription
+
+                                            </h4>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="text-white">Last Updated</h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <h6 class="text-white">
+
+                                                @city.LastModifiedOnDate
+
+                                            </h6>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div><hr>
+                        <div class="row" id="bottomRow">
+
+                            <div class="col">
+
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h5 class="text-white">
+                                            @city.TemperatureMin &deg;C
+
+                                        </h5>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h6 class="text-white">min</h6>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col">
+
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h4 class="text-white">
+                                            @city.Temperature &deg;C
+
+                                        </h4>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h5 class="text-white">Temp</h5>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="col">
+
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h5 class="text-white">
+                                            @city.TemperatureMax &deg;C
+
+                                        </h5>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="col">
+                                        <h6 class="text-white">max</h6>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        </div>
+                    
+                    
+                    
+                </li>
+                <hr>
+            }
+        </ul>
+    }
+</div>

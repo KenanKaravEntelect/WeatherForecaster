@@ -1,0 +1,10 @@
+C:\websites\dnndev.me\bin\WeatherForecaster.dll.config
+C:\websites\dnndev.me\bin\WeatherForecaster.dll
+C:\websites\dnndev.me\bin\WeatherForecaster.pdb
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\Kenan.Modules.WeatherForecaster.App_LocalResources.Settings.resources
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.csproj.GenerateResource.cache
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.csproj.CoreCompileInputs.cache
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.csproj.CopyComplete
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.dll
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.pdb
+C:\websites\dnndev.me\DesktopModules\MVC\WeatherForecaster\obj\Debug\WeatherForecaster.csproj.AssemblyReference.cache

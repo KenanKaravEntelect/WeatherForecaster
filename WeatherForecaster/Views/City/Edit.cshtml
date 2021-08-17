@@ -1,0 +1,117 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Kenan.Modules.WeatherForecaster.Models.City>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+@{ 
+
+    bool ManualEdit = Boolean.Parse((string)TempData["AllowManualEditing"]??"False");
+}
+<h1>@ViewBag.Error</h1>
+<div id="Item-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight "><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="row">
+                <div class="col-6 offset-4">
+                    <div class="dnnFormItem">
+                        <div><label for="cityName">@Dnn.LocalizeString("lblName")</label></div>
+                        @Html.TextBoxFor(m => m.CityName)
+
+                    </div>
+                </div>
+
+            </div>
+
+            @if (@ManualEdit)
+            {
+                <div class="row">
+                    <div class="col-6 offset-4">
+                        <div class="dnnFormItem">
+                            <div><label for="cityDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                            @Html.TextBoxFor(m => m.CityDescription)
+
+                        </div>
+                    </div>
+
+                </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+
+                                <div class="col-6 offset-4">
+
+                                    <div><label>Temperature</label></div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-1 offset-4">
+                                    <div class="dnnFormItem">
+                                        <div><label for="temperatureMin">@Dnn.LocalizeString("lblTempMin")</label></div>
+                                       <div> @Html.TextBoxFor(m => m.TemperatureMin, htmlAttributes: new { @class = "numeric w-100" })
+                                    </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="dnnFormItem">
+                                        <div><label for="temperature">@Dnn.LocalizeString("lblTemp")</label></div>
+                                    <div>   @Html.TextBoxFor(m => m.Temperature, htmlAttributes: new { @class = "numeric w-100" })
+                                    </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="dnnFormItem">
+                                        <div><label for="temperatureMax">@Dnn.LocalizeString("lblTempMax")</label></div>
+                                        <div>@Html.TextBoxFor(m => m.TemperatureMax, htmlAttributes: new { @class = "numeric w-100" })</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            }
+
+
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <div class="row">
+
+        <div class="col-1 offset-4">
+            <button type="submit" class="dnnPrimaryAction btn-dark">@Dnn.LocalizeString("Submit")</button>
+        </div>
+        <div class="col-1">
+            <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({ expandText: '@Dnn.LocalizeString("ExpandAll")', collapseText: '@Dnn.LocalizeString("CollapseAll")', targetArea: '#dnnEditBasicSettings' });
+        }
+
+        $(function() {
+            $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+</script>
